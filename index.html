@@ -90,15 +90,15 @@
       <div class="flex space-x-2 overflow-x-auto no-scrollbar pb-1 pt-0.5">
         <button onclick="switchDay(0)" id="day-btn-0" class="day-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-rose-600 text-white border border-rose-500 shadow-md shadow-rose-600/30 transition flex flex-col items-center min-w-[72px]">
           <span class="text-[10px] text-rose-200">10/22 목</span>
-          <span>Day 1 센트럴</span>
+          <span>Day 1 홍콩 숙소 근처</span>
         </button>
         <button onclick="switchDay(1)" id="day-btn-1" class="day-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 transition flex flex-col items-center min-w-[72px]">
           <span class="text-[10px] text-slate-400">10/23 금</span>
-          <span>Day 2 디즈니</span>
+          <span>Day 2 디즈니랜드</span>
         </button>
         <button onclick="switchDay(2)" id="day-btn-2" class="day-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 transition flex flex-col items-center min-w-[72px]">
           <span class="text-[10px] text-slate-400">10/24 토</span>
-          <span>Day 3 침사추이</span>
+          <span>Day 3 홍콩 투어</span>
         </button>
         <button onclick="switchDay(3)" id="day-btn-3" class="day-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 transition flex flex-col items-center min-w-[72px]">
           <span class="text-[10px] text-slate-400">10/25 일</span>
@@ -109,8 +109,8 @@
       <!-- Day Banner Info -->
       <div id="day-banner" class="bg-gradient-to-r from-rose-950/50 via-slate-900 to-indigo-950/50 border border-rose-500/30 rounded-2xl p-3.5 flex items-center justify-between shadow-md">
         <div>
-          <h2 id="day-title" class="font-bold text-white text-base">Day 1: 출국 & 홍콩 섬 센트럴 탐방</h2>
-          <p id="day-subtitle" class="text-xs text-rose-300/80 mt-0.5">인천 출발 → 홍콩 입국 → 숙소 체크인 → 피크트램</p>
+          <h2 id="day-title" class="font-bold text-white text-base">Day 1: 홍콩 숙소 근처 관광</h2>
+          <p id="day-subtitle" class="text-xs text-rose-300/80 mt-0.5">인천 출발 → 홍콩 입국 → 숙소 체크인 → 피크트램 야경</p>
         </div>
         <div class="text-right flex flex-col items-end gap-1.5">
           <span id="day-badge" class="bg-rose-500/20 text-rose-300 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30">10/22(목)</span>
@@ -452,8 +452,8 @@
           </div>
 
           <div>
-            <label class="text-[11px] text-slate-400 font-medium block mb-1">상세 메모 / 꿀팁 / 가이드 내용</label>
-            <textarea id="modal-edit-desc" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-rose-500 leading-relaxed" placeholder="관련 정보, 준비사항, 메뉴 추천 등을 자유롭게 적어보세요."></textarea>
+            <label class="text-[11px] text-slate-400 font-medium block mb-1">상세 메모 / 이동 경로 / 꿀팁 가이드</label>
+            <textarea id="modal-edit-desc" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-rose-500 leading-relaxed" placeholder="이동 경로(예: MTR 셩완역 -> 라이킹 환승 후 30분 소요), 메뉴 추천 등을 적어보세요."></textarea>
           </div>
         </div>
 
@@ -464,7 +464,7 @@
               <i class="fa-solid fa-map-location-dot text-rose-500"></i> 구글 맵 지도 연동
             </label>
             <a id="modal-google-map-btn" href="#" target="_blank" class="text-[11px] text-rose-400 hover:underline flex items-center gap-1">
-              구글맵 앱으로 열기 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              구글맵 앱으로 길찾기 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
             </a>
           </div>
           <div class="rounded-2xl overflow-hidden border border-slate-700/80 h-48 bg-slate-950 relative">
@@ -528,7 +528,7 @@
           { id: "s_1_1", time: "03:30", title: "인천공항 T1 집결", location: "인천국제공항 제1여객터미널", desc: "호정, 예나, 소은 인천공항 T1 체크인 카운터 집결", link: "", type: "이동" },
           { id: "s_1_2", time: "06:40", title: "인천 출발 (UO617)", location: "인천국제공항 T1", desc: "홍콩 익스프레스 탑승 (지정좌석: 11D, 11E, 11F)", link: "", type: "항공" },
           { id: "s_1_3", time: "09:30", title: "홍콩 공항 도착 (HKG)", location: "Hong Kong International Airport", desc: "입국 심사 → 옥토퍼스 카드 수령 및 충전 완료", link: "", type: "항공" },
-          { id: "s_1_4", time: "11:00", title: "A11 버스로 숙소 이동", location: "Hong Kong Airport Bus Terminal", desc: "A11 2층 버스 타고 이비스 센트럴 호텔로 이동 (약 45분 소요)", link: "", type: "이동" },
+          { id: "s_1_4", time: "11:00", title: "A11 버스로 숙소 이동", location: "Hong Kong Airport Bus Terminal", desc: "A11 2층 버스 타고 이비스 센트럴 호텔로 이동 (약 45분 소요)", link: "https://maps.google.com/?q=Hong+Kong+Airport+Bus+Terminal", type: "이동" },
           { id: "s_1_5", time: "12:00", title: "호텔 짐 보관 & 점심 식사", location: "Ibis Hong Kong Central & Sheung Wan", desc: "이비스 호텔 짐 보관 후 근처 'New Hing Fat Dim Sum' or '딤섬스퀘어' 점심 식사", link: "https://maps.app.goo.gl/HongKongDimSum", type: "식사" },
           { id: "s_1_6", time: "14:00", title: "센트럴 미드레벨 에스컬레이터", location: "Central Mid-Levels Escalators", desc: "소호거리, 벽화거리 탐방 후 베이크하우스(Bakehouse) 에그타르트 맛보기", link: "https://www.bakehouse.hk", type: "관광" },
           { id: "s_1_7", time: "15:30", title: "호텔 체크인 & 휴식", location: "Ibis Hong Kong Central", desc: "이비스 룸 체크인 후 잠시 정돈 및 휴식", link: "", type: "숙소" },
@@ -539,12 +539,12 @@
       {
         dayNum: 2,
         date: "10/23 (금)",
-        title: "Day 2: 홍콩 디즈니랜드 All Day",
-        subtitle: "꿈의 동산! 겨울왕국 세상 & 불꽃놀이 명당",
+        title: "Day 2: 홍콩 디즈니랜드",
+        subtitle: "디즈니랜드 이용권 선택 필요",
         badge: "10/23(금)",
         schedule: [
           { id: "s_2_1", time: "08:30", title: "기상 및 간단한 아침", location: "이비스 호텔", desc: "숙소 근처 차찬탱 or 베이크하우스 빵", link: "", type: "식사" },
-          { id: "s_2_2", time: "09:30", title: "디즈니랜드로 이동", location: "Disneyland Resort Station", desc: "MTR 셩완 → 라이킹 환승 → 디즈니랜드 리조트선 탑승", link: "", type: "이동" },
+          { id: "s_2_2", time: "09:30", title: "디즈니랜드로 이동 (MTR 경로)", location: "Disneyland Resort Station", desc: "MTR 셩완역 → 라이킹역 환승 → 서니베이역 환승 → 디즈니랜드 리조트선 (약 35분 소요)", link: "https://maps.google.com/?q=Disneyland+Resort+Station", type: "이동" },
           { id: "s_2_3", time: "10:30", title: "디즈니랜드 입장!", location: "Hong Kong Disneyland", desc: "겨울왕국(World of Frozen) 어트랙션 선점 ❄️", link: "https://www.hongkongdisneyland.com", type: "관광" },
           { id: "s_2_4", time: "13:00", title: "디즈니랜드 점심 식사", location: "Hong Kong Disneyland", desc: "디즈니 내 테마 레스토랑 이용", link: "", type: "식사" },
           { id: "s_2_5", time: "16:00", title: "퍼레이드 & 굿즈 샵 투어", location: "Hong Kong Disneyland", desc: "헤어밴드, 머리띠 기념품 구매 & 사진 촬영", link: "", type: "관광" },
@@ -555,13 +555,13 @@
       {
         dayNum: 3,
         date: "10/24 (토)",
-        title: "Day 3: 익청빌딩 & 침사추이/야시장",
-        subtitle: "트랜스포머 촬영지 → 스타의 거리 → 야경 & 야시장",
+        title: "Day 3: 홍콩 주요 관광지",
+        subtitle: "포토스팟, 시장, 맛집 등",
         badge: "10/24(토)",
         schedule: [
           { id: "s_3_1", time: "09:00", title: "란퐁유엔 토스트 & 밀크티", location: "Lan Fong Yuen Central", desc: "홍콩 전통 주전자 밀크티와 프렌치 토스트 브런치", link: "", type: "식사" },
           { id: "s_3_2", time: "10:30", title: "익청빌딩 (Yick Cheong Building)", location: "Yick Cheong Building Tai Koo", desc: "트램 타고 타이쿠(Tai Koo) 이동 → 인생샷 촬영 📸", link: "", type: "관광" },
-          { id: "s_3_3", time: "13:00", title: "스타페리 타고 침사추이 이동", location: "Central Ferry Pier", desc: "센트럴 페리 선착장에서 스타페리 탑승 (경치 최고)", link: "", type: "이동" },
+          { id: "s_3_3", time: "13:00", title: "스타페리 타고 침사추이 이동", location: "Central Ferry Pier", desc: "센트럴 페리 선착장에서 스타페리 탑승 (경치 최고)", link: "https://maps.google.com/?q=Central+Ferry+Pier", type: "이동" },
           { id: "s_3_4", time: "14:00", title: "Snack Baby Gelato OR 아이스크림", location: "K11 MUSEA Tsim Sha Tsui", desc: "Snack Baby Gelato 아이스크림 먹고 쇼핑몰 구경", link: "", type: "식사" },
           { id: "s_3_5", time: "16:30", title: "몽콕 레이디스 마켓 (야시장)", location: "Ladies' Market Mong Kok", desc: "기념품, 네임택, 가방 등 깎기 흥정 필수! 🛍️", link: "", type: "관광" },
           { id: "s_3_6", time: "18:30", title: "애문생 OR 침사추이 록예 저녁", location: "Oi Man Sang Sham Shui Po", desc: "백종원 스트리트푸드파이터 '애문생' 맛집 or 록예 바베큐", link: "", type: "식사" },
@@ -572,13 +572,13 @@
         dayNum: 4,
         date: "10/25 (일)",
         title: "Day 4: 마지막 쇼핑 & 귀국",
-        subtitle: "제니쿠키 픽업 → 공항 이동 → 한국 도착",
+        subtitle: "브런치 → 마지막 쇼핑 → 공항 이동 → 한국 도착",
         badge: "10/25(일)",
         schedule: [
           { id: "s_4_1", time: "09:00", title: "체크아웃 준비 & 짐 보관", location: "이비스 홍콩 센트럴 앤 셩완", desc: "호텔 리셉션에 짐 맡기기", link: "", type: "숙소" },
           { id: "s_4_2", time: "10:00", title: "제니쿠키 (Jenny Bakery) 셩완", location: "Jenny Bakery Sheung Wan", desc: "셩완점 제니쿠키 오픈런 쇼핑 🍪", link: "", type: "관광" },
           { id: "s_4_3", time: "11:30", title: "마미팬케이크 OR 에그와플", location: "Mammy Pancake Sheung Wan", desc: "홍콩 에그와플(마미팬케이크) & 밀크티 한잔", link: "", type: "식사" },
-          { id: "s_4_4", time: "13:00", title: "호텔 짐 수령 & A11 공항 버스", location: "Ibis Sheung Wan Bus Stop", desc: "호텔 앞에서 A11 버스 타고 홍콩 공항 이동", link: "", type: "이동" },
+          { id: "s_4_4", time: "13:00", title: "호텔 짐 수령 & A11 공항 버스", location: "Ibis Sheung Wan Bus Stop", desc: "호텔 앞에서 A11 버스 타고 홍콩 공항 이동 (약 45분 소요)", link: "https://maps.google.com/?q=Ibis+Sheung+Wan+Bus+Stop", type: "이동" },
           { id: "s_4_5", time: "14:30", title: "홍콩 공항 수속 & 면세점", location: "Hong Kong International Airport T1", desc: "체크인, 위탁수하물 부치기 및 면세점 구경", link: "", type: "항공" },
           { id: "s_4_6", time: "16:40", title: "홍콩 출발 (UO626)", location: "Hong Kong Airport T1", desc: "인천행 비행기 탑승 (16:40 출발)", link: "", type: "항공" },
           { id: "s_4_7", time: "21:05", title: "인천 국제공항 도착", location: "인천국제공항 T1", desc: "무사히 한국 도착! 수고 많았던 소은투어 종료 💖", link: "", type: "항공" }
@@ -628,7 +628,7 @@
     ];
 
     // --- APP STATE ---
-    let daysData = JSON.parse(localStorage.getItem('hk_daysData_v3')) || initialDaysData;
+    let daysData = JSON.parse(localStorage.getItem('hk_daysData_v4')) || initialDaysData;
     let bookingItems = JSON.parse(localStorage.getItem('hk_bookingItems')) || initialBookingItems;
     let packingItems = JSON.parse(localStorage.getItem('hk_packingItems')) || initialPackingItems;
     let expenseItems = JSON.parse(localStorage.getItem('hk_expenseItems')) || initialExpenseItems;
@@ -650,7 +650,7 @@
     };
 
     function saveDataToStorage() {
-      localStorage.setItem('hk_daysData_v3', JSON.stringify(daysData));
+      localStorage.setItem('hk_daysData_v4', JSON.stringify(daysData));
       localStorage.setItem('hk_bookingItems', JSON.stringify(bookingItems));
       localStorage.setItem('hk_packingItems', JSON.stringify(packingItems));
       localStorage.setItem('hk_expenseItems', JSON.stringify(expenseItems));
@@ -755,11 +755,12 @@
       day.schedule.forEach((item, itemIdx) => {
         const isChecked = !!checkedState[item.id];
         const isOrChoice = /\bOR\b/i.test(item.title) || /\bOR\b/i.test(item.desc);
+        const isRouteType = item.type === '이동';
 
         let typeBadge = '';
         switch(item.type) {
           case '식사': typeBadge = '<span class="bg-amber-500/20 text-amber-300 text-[10px] px-2 py-0.5 rounded border border-amber-500/30 font-medium">🍴 식사</span>'; break;
-          case '이동': typeBadge = '<span class="bg-blue-500/20 text-blue-300 text-[10px] px-2 py-0.5 rounded border border-blue-500/30 font-medium">🚌 이동</span>'; break;
+          case '이동': typeBadge = '<span class="bg-sky-500/20 text-sky-300 text-[10px] px-2 py-0.5 rounded border border-sky-500/30 font-medium">🚌 이동 경로</span>'; break;
           case '관광': typeBadge = '<span class="bg-rose-500/20 text-rose-300 text-[10px] px-2 py-0.5 rounded border border-rose-500/30 font-medium">🎡 관광</span>'; break;
           case '숙소': typeBadge = '<span class="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded border border-purple-500/30 font-medium">🛌 숙소</span>'; break;
           case '항공': typeBadge = '<span class="bg-teal-500/20 text-teal-300 text-[10px] px-2 py-0.5 rounded border border-teal-500/30 font-medium">✈️ 항공</span>'; break;
@@ -800,12 +801,12 @@
         });
         
         card.innerHTML = `
-          <div class="absolute left-3 top-3.5 w-3 h-3 rounded-full ${isChecked ? 'bg-emerald-500' : (isOrChoice ? 'bg-amber-400 ring-4 ring-amber-400/30' : 'bg-rose-500')} -translate-x-1/2 border-2 border-slate-900 z-10"></div>
+          <div class="absolute left-3 top-3.5 w-3 h-3 rounded-full ${isChecked ? 'bg-emerald-500' : (isOrChoice ? 'bg-amber-400 ring-4 ring-amber-400/30' : (isRouteType ? 'bg-sky-400 ring-2 ring-sky-400/30' : 'bg-rose-500'))} -translate-x-1/2 border-2 border-slate-900 z-10"></div>
           
-          <div onclick="openDetailModal('schedule', ${dayIdx}, ${itemIdx})" class="glass-card border ${isOrChoice ? 'or-highlight' : 'border-slate-800'} rounded-2xl p-3.5 space-y-2 shadow-md hover:border-slate-600 cursor-pointer active:scale-[0.99] transition">
+          <div onclick="openDetailModal('schedule', ${dayIdx}, ${itemIdx})" class="glass-card border ${isOrChoice ? 'or-highlight' : (isRouteType ? 'border-sky-500/40 bg-sky-950/20' : 'border-slate-800')} rounded-2xl p-3.5 space-y-2 shadow-md hover:border-slate-600 cursor-pointer active:scale-[0.99] transition">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="text-xs font-black text-rose-400 tracking-wide">${item.time || '시간미정'}</span>
+                <span class="text-xs font-black ${isRouteType ? 'text-sky-400' : 'text-rose-400'} tracking-wide">${item.time || '시간미정'}</span>
                 ${typeBadge}
                 ${isOrChoice ? '<span class="bg-amber-500 text-slate-950 text-[10px] font-black px-1.5 py-0.5 rounded shadow">⚡ OR 선택</span>' : ''}
               </div>
@@ -830,17 +831,17 @@
               </div>
             </div>
 
-            <h4 class="text-sm font-bold ${isOrChoice ? 'text-amber-200' : 'text-slate-100'} ${isChecked ? 'line-through text-slate-500' : ''}">
-              ${item.title}
+            <h4 class="text-sm font-bold ${isOrChoice ? 'text-amber-200' : (isRouteType ? 'text-sky-200' : 'text-slate-100')} ${isChecked ? 'line-through text-slate-500' : ''}">
+              ${isRouteType ? `<i class="fa-solid fa-route text-sky-400 mr-1"></i>` : ''}${item.title}
             </h4>
 
             ${item.desc ? `<p class="text-xs text-slate-400 leading-relaxed line-clamp-2">${item.desc}</p>` : ''}
 
             <div class="flex items-center justify-between text-[11px] pt-1 text-slate-400 border-t border-slate-800/60">
               <span class="flex items-center gap-1 text-slate-300">
-                <i class="fa-solid fa-location-dot text-rose-500"></i> ${item.location || '홍콩 시내'}
+                <i class="fa-solid fa-location-dot ${isRouteType ? 'text-sky-400' : 'text-rose-500'}"></i> ${item.location || '홍콩 시내'}
               </span>
-              <span class="text-[10px] text-rose-400 hover:underline flex items-center gap-1 font-medium">
+              <span class="text-[10px] ${isRouteType ? 'text-sky-400' : 'text-rose-400'} hover:underline flex items-center gap-1 font-medium">
                 상세보기 & 지도 <i class="fa-solid fa-chevron-right text-[8px]"></i>
               </span>
             </div>
@@ -1122,25 +1123,25 @@
           </div>
           <div>
             <label class="text-[11px] text-slate-400 block mb-1">일정 제목 (OR 포함 시 노란색 하이라이트)</label>
-            <input type="text" id="add-schedule-title" placeholder="예: 운남쌀국수 OR 카레국수" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="add-schedule-title" placeholder="예: MTR 이동 OR 운남쌀국수" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
           </div>
           <div>
             <label class="text-[11px] text-slate-400 block mb-1">장소 명칭 (구글맵 검색용)</label>
-            <input type="text" id="add-schedule-loc" placeholder="예: 베이크하우스 센트럴" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="add-schedule-loc" placeholder="예: 셩완역 MTR, 베이크하우스 센트럴" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
           </div>
           <div>
             <label class="text-[11px] text-slate-400 block mb-1">카테고리 구분</label>
             <select id="add-schedule-type" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="이동">🚌 이동 경로</option>
               <option value="관광">🎡 관광</option>
               <option value="식사">🍴 식사</option>
-              <option value="이동">🚌 이동</option>
               <option value="숙소">🛌 숙소</option>
               <option value="항공">✈️ 항공</option>
             </select>
           </div>
           <div>
-            <label class="text-[11px] text-slate-400 block mb-1">상세 설명 / 메모</label>
-            <textarea id="add-schedule-desc" rows="2" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white"></textarea>
+            <label class="text-[11px] text-slate-400 block mb-1">상세 설명 / 이동 상세 경로</label>
+            <textarea id="add-schedule-desc" rows="2" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white" placeholder="예: MTR 셩완역 -> 라이킹 환승 후 35분 소요"></textarea>
           </div>
         `;
       } else if(target === 'booking') {
