@@ -116,9 +116,12 @@
           <span id="day-badge" class="bg-rose-500/20 text-rose-300 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30">10/22(목)</span>
           <div class="flex items-center gap-1">
             <button onclick="sortScheduleByTime()" class="text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded-lg border border-slate-700 flex items-center gap-1 transition" title="시간순 자동 정렬">
-              <i class="fa-solid fa-arrow-down-1-9 text-rose-400"></i> 시간정렬
+              <i class="fa-solid fa-arrow-down-1-9 text-rose-400"></i> 정렬
             </button>
-            <button onclick="openAddItemModal('schedule')" class="text-[11px] bg-rose-600 hover:bg-rose-500 text-white font-medium px-2.5 py-1 rounded-lg flex items-center gap-1 shadow transition">
+            <button onclick="openAddItemModal('route')" class="text-[11px] bg-sky-900/80 hover:bg-sky-800 text-sky-200 border border-sky-700/80 font-medium px-2 py-1 rounded-lg flex items-center gap-1 transition shadow">
+              <i class="fa-solid fa-route text-sky-400 text-[10px]"></i> 이동 추가
+            </button>
+            <button onclick="openAddItemModal('schedule')" class="text-[11px] bg-rose-600 hover:bg-rose-500 text-white font-medium px-2 py-1 rounded-lg flex items-center gap-1 shadow transition">
               <i class="fa-solid fa-plus text-[10px]"></i> 추가
             </button>
           </div>
@@ -453,7 +456,7 @@
 
           <div>
             <label class="text-[11px] text-slate-400 font-medium block mb-1">상세 메모 / 이동 경로 / 꿀팁 가이드</label>
-            <textarea id="modal-edit-desc" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-rose-500 leading-relaxed" placeholder="이동 경로(예: MTR 셩완역 -> 라이킹 환승 후 30분 소요), 메뉴 추천 등을 적어보세요."></textarea>
+            <textarea id="modal-edit-desc" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-rose-500 leading-relaxed" placeholder="이동 경로(예: MTR 셩완역 -> 라이킹 환승 후 35분 소요), 메뉴 추천 등을 적어보세요."></textarea>
           </div>
         </div>
 
@@ -628,7 +631,7 @@
     ];
 
     // --- APP STATE ---
-    let daysData = JSON.parse(localStorage.getItem('hk_daysData_v4')) || initialDaysData;
+    let daysData = JSON.parse(localStorage.getItem('hk_daysData_v6')) || initialDaysData;
     let bookingItems = JSON.parse(localStorage.getItem('hk_bookingItems')) || initialBookingItems;
     let packingItems = JSON.parse(localStorage.getItem('hk_packingItems')) || initialPackingItems;
     let expenseItems = JSON.parse(localStorage.getItem('hk_expenseItems')) || initialExpenseItems;
@@ -650,7 +653,7 @@
     };
 
     function saveDataToStorage() {
-      localStorage.setItem('hk_daysData_v4', JSON.stringify(daysData));
+      localStorage.setItem('hk_daysData_v6', JSON.stringify(daysData));
       localStorage.setItem('hk_bookingItems', JSON.stringify(bookingItems));
       localStorage.setItem('hk_packingItems', JSON.stringify(packingItems));
       localStorage.setItem('hk_expenseItems', JSON.stringify(expenseItems));
@@ -764,7 +767,8 @@
           case '관광': typeBadge = '<span class="bg-rose-500/20 text-rose-300 text-[10px] px-2 py-0.5 rounded border border-rose-500/30 font-medium">🎡 관광</span>'; break;
           case '숙소': typeBadge = '<span class="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded border border-purple-500/30 font-medium">🛌 숙소</span>'; break;
           case '항공': typeBadge = '<span class="bg-teal-500/20 text-teal-300 text-[10px] px-2 py-0.5 rounded border border-teal-500/30 font-medium">✈️ 항공</span>'; break;
-          default: typeBadge = '<span class="bg-slate-700 text-slate-300 text-[10px] px-2 py-0.5 rounded font-medium">📌 일정</span>';
+          case '일반': typeBadge = '<span class="bg-slate-700/80 text-slate-200 text-[10px] px-2 py-0.5 rounded border border-slate-600 font-medium">📌 일반</span>'; break;
+          default: typeBadge = '<span class="bg-slate-700 text-slate-300 text-[10px] px-2 py-0.5 rounded font-medium">📌 일반</span>';
         }
 
         const card = document.createElement('div');
@@ -1114,7 +1118,28 @@
       const body = document.getElementById('add-modal-body');
       const title = document.getElementById('add-modal-title');
       
-      if(target === 'schedule') {
+      if(target === 'route') {
+        title.innerHTML = `<i class="fa-solid fa-route text-sky-400"></i> Day ${currentDayIndex + 1} 이동 경로 추가`;
+        body.innerHTML = `
+          <div>
+            <label class="text-[11px] text-slate-400 block mb-1">출발 시간 (예: 11:00)</label>
+            <input type="text" id="add-schedule-time" placeholder="11:00" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+          </div>
+          <div>
+            <label class="text-[11px] text-slate-400 block mb-1">이동 제목 (예: A11 버스로 숙소 이동)</label>
+            <input type="text" id="add-schedule-title" placeholder="예: MTR 셩완역 -> 라이킹역 환승 이동" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+          </div>
+          <div>
+            <label class="text-[11px] text-slate-400 block mb-1">도착지/목적지 (구글맵 길찾기용)</label>
+            <input type="text" id="add-schedule-loc" placeholder="예: Ibis Hong Kong Central, Disneyland Station" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+          </div>
+          <input type="hidden" id="add-schedule-type" value="이동">
+          <div>
+            <label class="text-[11px] text-slate-400 block mb-1">이동수단 및 소요시간 상세 정보</label>
+            <textarea id="add-schedule-desc" rows="2" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white" placeholder="예: 셩완역 승차 -> 라이킹 환승 후 서니베이행 (약 35분 소요)"></textarea>
+          </div>
+        `;
+      } else if(target === 'schedule') {
         title.innerHTML = `<i class="fa-solid fa-calendar-plus text-rose-500"></i> Day ${currentDayIndex + 1} 새 일정 추가`;
         body.innerHTML = `
           <div>
@@ -1123,15 +1148,16 @@
           </div>
           <div>
             <label class="text-[11px] text-slate-400 block mb-1">일정 제목 (OR 포함 시 노란색 하이라이트)</label>
-            <input type="text" id="add-schedule-title" placeholder="예: MTR 이동 OR 운남쌀국수" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="add-schedule-title" placeholder="예: 운남쌀국수 OR 카레국수" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
           </div>
           <div>
             <label class="text-[11px] text-slate-400 block mb-1">장소 명칭 (구글맵 검색용)</label>
-            <input type="text" id="add-schedule-loc" placeholder="예: 셩완역 MTR, 베이크하우스 센트럴" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="add-schedule-loc" placeholder="예: 베이크하우스 센트럴" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
           </div>
           <div>
             <label class="text-[11px] text-slate-400 block mb-1">카테고리 구분</label>
             <select id="add-schedule-type" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="일반">📌 일반</option>
               <option value="이동">🚌 이동 경로</option>
               <option value="관광">🎡 관광</option>
               <option value="식사">🍴 식사</option>
@@ -1140,8 +1166,8 @@
             </select>
           </div>
           <div>
-            <label class="text-[11px] text-slate-400 block mb-1">상세 설명 / 이동 상세 경로</label>
-            <textarea id="add-schedule-desc" rows="2" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white" placeholder="예: MTR 셩완역 -> 라이킹 환승 후 35분 소요"></textarea>
+            <label class="text-[11px] text-slate-400 block mb-1">상세 설명 / 메모</label>
+            <textarea id="add-schedule-desc" rows="2" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white"></textarea>
           </div>
         `;
       } else if(target === 'booking') {
@@ -1217,7 +1243,7 @@
     function submitNewItem() {
       if(!addModalTarget) return;
 
-      if(addModalTarget === 'schedule') {
+      if(addModalTarget === 'schedule' || addModalTarget === 'route') {
         const time = document.getElementById('add-schedule-time').value.trim();
         const title = document.getElementById('add-schedule-title').value.trim();
         const loc = document.getElementById('add-schedule-loc').value.trim();
