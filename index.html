@@ -519,75 +519,8 @@
   </div>
 
   <script>
-    // --- INITIAL SEED DATA STRUCTURE ---
-    const initialDaysData = [
-      {
-        dayNum: 1,
-        date: "10/22 (목)",
-        title: "Day 1: 홍콩 입국 & 센트럴/피크트램",
-        subtitle: "인천 출발 → 홍콩 입국 → 숙소 체크인 → 피크트램 야경",
-        badge: "10/22(목)",
-        schedule: [
-          { id: "s_1_1", time: "03:30", title: "인천공항 T1 집결", location: "인천국제공항 제1여객터미널", desc: "호정, 예나, 소은 인천공항 T1 체크인 카운터 집결", link: "", type: "이동" },
-          { id: "s_1_2", time: "06:40", title: "인천 출발 (UO617)", location: "인천국제공항 T1", desc: "홍콩 익스프레스 탑승 (지정좌석: 11D, 11E, 11F)", link: "", type: "항공" },
-          { id: "s_1_3", time: "09:30", title: "홍콩 공항 도착 (HKG)", location: "Hong Kong International Airport", desc: "입국 심사 → 옥토퍼스 카드 수령 및 충전 완료", link: "", type: "항공" },
-          { id: "s_1_4", time: "11:00", title: "A11 버스로 숙소 이동", location: "Hong Kong Airport Bus Terminal", desc: "A11 2층 버스 타고 이비스 센트럴 호텔로 이동 (약 45분 소요)", link: "https://maps.google.com/?q=Hong+Kong+Airport+Bus+Terminal", type: "이동" },
-          { id: "s_1_5", time: "12:00", title: "호텔 짐 보관 & 점심 식사", location: "Ibis Hong Kong Central & Sheung Wan", desc: "이비스 호텔 짐 보관 후 근처 'New Hing Fat Dim Sum' or '딤섬스퀘어' 점심 식사", link: "https://maps.app.goo.gl/HongKongDimSum", type: "식사" },
-          { id: "s_1_6", time: "14:00", title: "센트럴 미드레벨 에스컬레이터", location: "Central Mid-Levels Escalators", desc: "소호거리, 벽화거리 탐방 후 베이크하우스(Bakehouse) 에그타르트 맛보기", link: "https://www.bakehouse.hk", type: "관광" },
-          { id: "s_1_7", time: "15:30", title: "호텔 체크인 & 휴식", location: "Ibis Hong Kong Central", desc: "이비스 룸 체크인 후 잠시 정돈 및 휴식", link: "", type: "숙소" },
-          { id: "s_1_8", time: "17:30", title: "피크트램 타고 빅토리아 피크", location: "Peak Tram Central Terminus", desc: "피크트램 패스트트랙 탑승 후 홍콩 3대 야경 감상 🌃", link: "", type: "관광" },
-          { id: "s_1_9", time: "20:00", title: "운남쌀국수 OR 카레국수 저녁", location: "성림거 운남쌀국수 센트럴", desc: "운남쌀국수 또는 카레국수 중 투표로 선택해 저녁 먹기!", link: "", type: "식사" }
-        ]
-      },
-      {
-        dayNum: 2,
-        date: "10/23 (금)",
-        title: "Day 2: 홍콩 디즈니랜드",
-        subtitle: "디즈니랜드 이용권 선택 필요",
-        badge: "10/23(금)",
-        schedule: [
-          { id: "s_2_1", time: "08:30", title: "기상 및 간단한 아침", location: "이비스 호텔", desc: "숙소 근처 차찬탱 or 베이크하우스 빵", link: "", type: "식사" },
-          { id: "s_2_2", time: "09:30", title: "디즈니랜드로 이동 (MTR 경로)", location: "Disneyland Resort Station", desc: "MTR 셩완역 → 라이킹역 환승 → 서니베이역 환승 → 디즈니랜드 리조트선 (약 35분 소요)", link: "https://maps.google.com/?q=Disneyland+Resort+Station", type: "이동" },
-          { id: "s_2_3", time: "10:30", title: "디즈니랜드 입장!", location: "Hong Kong Disneyland", desc: "겨울왕국(World of Frozen) 어트랙션 선점 ❄️", link: "https://www.hongkongdisneyland.com", type: "관광" },
-          { id: "s_2_4", time: "13:00", title: "디즈니랜드 점심 식사", location: "Hong Kong Disneyland", desc: "디즈니 내 테마 레스토랑 이용", link: "", type: "식사" },
-          { id: "s_2_5", time: "16:00", title: "퍼레이드 & 굿즈 샵 투어", location: "Hong Kong Disneyland", desc: "헤어밴드, 머리띠 기념품 구매 & 사진 촬영", link: "", type: "관광" },
-          { id: "s_2_6", time: "20:30", title: "나이트 스펙타큘러 불꽃놀이", location: "Castle of Magical Dreams", desc: "성 앞 메인 스트리트 명당자리 확보 후 관람 ✨", link: "", type: "관광" },
-          { id: "s_2_7", time: "22:00", title: "템플스트리트 야시장 OR 로컬 딤섬", location: "Temple Street Night Market", desc: "야시장 구경 또는 딤섬 OR 베이크하우스 야식 먹기", link: "", type: "식사" }
-        ]
-      },
-      {
-        dayNum: 3,
-        date: "10/24 (토)",
-        title: "Day 3: 홍콩 주요 관광지",
-        subtitle: "포토스팟, 시장, 맛집 등",
-        badge: "10/24(토)",
-        schedule: [
-          { id: "s_3_1", time: "09:00", title: "란퐁유엔 토스트 & 밀크티", location: "Lan Fong Yuen Central", desc: "홍콩 전통 주전자 밀크티와 프렌치 토스트 브런치", link: "", type: "식사" },
-          { id: "s_3_2", time: "10:30", title: "익청빌딩 (Yick Cheong Building)", location: "Yick Cheong Building Tai Koo", desc: "트램 타고 타이쿠(Tai Koo) 이동 → 인생샷 촬영 📸", link: "", type: "관광" },
-          { id: "s_3_3", time: "13:00", title: "스타페리 타고 침사추이 이동", location: "Central Ferry Pier", desc: "센트럴 페리 선착장에서 스타페리 탑승 (경치 최고)", link: "https://maps.google.com/?q=Central+Ferry+Pier", type: "이동" },
-          { id: "s_3_4", time: "14:00", title: "Snack Baby Gelato OR 아이스크림", location: "K11 MUSEA Tsim Sha Tsui", desc: "Snack Baby Gelato 아이스크림 먹고 쇼핑몰 구경", link: "", type: "식사" },
-          { id: "s_3_5", time: "16:30", title: "몽콕 레이디스 마켓 (야시장)", location: "Ladies' Market Mong Kok", desc: "기념품, 네임택, 가방 등 깎기 흥정 필수! 🛍️", link: "", type: "관광" },
-          { id: "s_3_6", time: "18:30", title: "애문생 OR 침사추이 록예 저녁", location: "Oi Man Sang Sham Shui Po", desc: "백종원 스트리트푸드파이터 '애문생' 맛집 or 록예 바베큐", link: "", type: "식사" },
-          { id: "s_3_7", time: "20:00", title: "심포니 오브 라이트 & 대관람차", location: "Avenue of Stars Tsim Sha Tsui", desc: "스타의 거리에서 센트럴 야경 및 심포니 오브 라이트 관람", link: "", type: "관광" }
-        ]
-      },
-      {
-        dayNum: 4,
-        date: "10/25 (일)",
-        title: "Day 4: 마지막 쇼핑 & 귀국",
-        subtitle: "브런치 → 마지막 쇼핑 → 공항 이동 → 한국 도착",
-        badge: "10/25(일)",
-        schedule: [
-          { id: "s_4_1", time: "09:00", title: "체크아웃 준비 & 짐 보관", location: "이비스 홍콩 센트럴 앤 셩완", desc: "호텔 리셉션에 짐 맡기기", link: "", type: "숙소" },
-          { id: "s_4_2", time: "10:00", title: "제니쿠키 (Jenny Bakery) 셩완", location: "Jenny Bakery Sheung Wan", desc: "셩완점 제니쿠키 오픈런 쇼핑 🍪", link: "", type: "관광" },
-          { id: "s_4_3", time: "11:30", title: "마미팬케이크 OR 에그와플", location: "Mammy Pancake Sheung Wan", desc: "홍콩 에그와플(마미팬케이크) & 밀크티 한잔", link: "", type: "식사" },
-          { id: "s_4_4", time: "13:00", title: "호텔 짐 수령 & A11 공항 버스", location: "Ibis Sheung Wan Bus Stop", desc: "호텔 앞에서 A11 버스 타고 홍콩 공항 이동 (약 45분 소요)", link: "https://maps.google.com/?q=Ibis+Sheung+Wan+Bus+Stop", type: "이동" },
-          { id: "s_4_5", time: "14:30", title: "홍콩 공항 수속 & 면세점", location: "Hong Kong International Airport T1", desc: "체크인, 위탁수하물 부치기 및 면세점 구경", link: "", type: "항공" },
-          { id: "s_4_6", time: "16:40", title: "홍콩 출발 (UO626)", location: "Hong Kong Airport T1", desc: "인천행 비행기 탑승 (16:40 출발)", link: "", type: "항공" },
-          { id: "s_4_7", time: "21:05", title: "인천 국제공항 도착", location: "인천국제공항 T1", desc: "무사히 한국 도착! 수고 많았던 소은투어 종료 💖", link: "", type: "항공" }
-        ]
-      }
-    ];
+    // --- INITIAL SEED DATA STRUCTURE (EXTRACTED FROM USER'S LOCALSTORAGE) ---
+    const initialDaysData = [{"dayNum":1,"date":"10/22 (목)","title":"Day 1: 홍콩 입국 & 센트럴/피크트램","subtitle":"인천 출발 → 홍콩 입국 → 숙소 체크인 → 피크트램 야경","badge":"10/22(목)","schedule":[{"id":"s_1_1","time":"03:30","title":"인천공항 T1 집결","location":"인천국제공항 제1여객터미널","desc":"호정, 예나, 소은 인천공항 T1 체크인 카운터 집결","link":"","type":"이동"},{"id":"s_0_1789020651984","time":"03:40","title":"체크인","location":"인천공항제1터미널","type":"일반","desc":"수화물 20KG 제한","link":""},{"id":"s_0_1789020886439","time":"04:00","title":"환전 픽업 (우리은행)","location":"인천공항제1터미널","type":"일반","desc":"출발층 3층 H체크인카운터","link":"https://blog.naver.com/wg2pm/224359497306"},{"id":"s_0_1789020998701","time":"04:30","title":"입국장","location":"인천공항제1터미널","type":"일반","desc":"면세점 픽업 등 (면세점이 새벽에는 운영 X > 픽업할거 미리 주문하기 !)","link":""},{"id":"s_1_2","time":"06:40","title":"인천 공항 출발 (UO617)","location":"인천국제공항 T1","desc":"홍콩 익스프레스 탑승 (지정좌석: 11D, 11E, 11F)","link":"","type":"항공"},{"id":"s_0_1789022235122","time":"06:40","title":"약 4시간 소요","location":"인천공항","type":"이동","desc":"","link":""},{"id":"s_1_3","time":"09:30","title":"홍콩 공항 도착 (HKG)","location":"Hong Kong International Airport","desc":"수화물 찾기","link":"","type":"항공"},{"id":"s_0_1789022547181","time":"09:40","title":"옥토퍼스 카드 수령","location":"홍콩공항","type":"일반","desc":"A홀로 나와소 바로 A13 쪽 카운터 위치","link":"https://blog.naver.com/hwho1117/224222001649"},{"id":"s_1_4","time":"11:00","title":"A11 버스로 숙소 이동","location":"홍콩 공항","desc":"A11 버스 타고 이비스 센트럴 호텔로 이동 (약 1시간 소요)","link":"https://blog.naver.com/studywithme365/224396259385","type":"이동"},{"id":"s_0_1789022928767","time":"12:00","title":"호텔 짐 보관","location":"이비스 홍콩 센트럴 앤 셩완 호텔","type":"숙소","desc":"","link":""},{"id":"s_1_5","time":"12:00","title":"점심 식사 (로컬 OR 유명)","location":"Ibis Hong Kong Central & Sheung Wan","desc":"이비스 호텔 짐 보관 후 근처에서 점심 식사\n\n딤섬 맛집 리스트\n- 로컬 st (뉴힝팻)\n- 유명 맛집 ( 원딤섬, 팀호완, 딤섬스퀘어)","link":"","type":"식사"},{"id":"s_1_6","time":"14:00","title":"센트럴 미드레벨 에스컬레이터","location":"Central Mid-Levels Escalators","desc":"소호거리, 벽화거리 탐방 후 베이크하우스 에그타르트, 제니쿠키","link":"","type":"관광"},{"id":"s_1_7","time":"15:00","title":"호텔 체크인 & 휴식","location":"이비스 홍콩 센트럴 앤 셩완 호텔","desc":"룸 체크인 후 잠시 정돈 및 휴식","link":"","type":"숙소"},{"id":"s_1_8","time":"17:30","title":"피크트램 타고 빅토리아 피크","location":"Peak Tram Central Terminus","desc":"피크트램 패스트트랙 탑승 후 홍콩 3대 야경 감상 🌃\n\n미리 한달전 티켓 구매 필수","link":"","type":"관광"},{"id":"s_1_9","time":"20:00","title":"운남쌀국수 OR 카레국수 저녁","location":"성림거 운남쌀국수 센트럴","desc":"운남쌀국수 또는 카레국수 중 선택 (딴거 먹고 싶은거 있으면 그거 반영해 줄게용)","link":"","type":"식사"},{"id":"s_0_1789023421779","time":"22:00","title":"숙소","location":"이비스 홍콩 센트럴 앤 셩완 호텔","type":"숙소","desc":"숙소 귀가","link":""}]},{"dayNum":2,"date":"10/23 (금)","title":"Day 2: 홍콩 디즈니랜드","subtitle":"디즈니랜드 이용권 선택 필요","badge":"10/23(금)","schedule":[{"id":"s_2_1","time":"05:30","title":"기상 및 준비","location":"이비스 셩완","desc":"디즈니랜드 오픈런을 위해 이른 기상 필요","link":"","type":"식사"},{"id":"s_1_1789024541869","time":"07:30","title":"란퐁유엔 토스트 & 밀크티","location":"란퐁유엔 소호점","type":"일반","desc":"","link":"https://maps.app.goo.gl/edNe5hV6jbC7AtK7A"},{"id":"s_2_2","time":"08:00","title":"디즈니랜드 출발","location":"셩완역","desc":"셩완역 (island Line/Chai Wna방향) >센트럴역[홍콩역] 환승 (6정거장) (Tung Chung Line/Tung Chung방향) > 서니베이역 환승 > 디즈니랜드 도착","link":"","type":"이동"},{"id":"s_2_3","time":"10:00","title":"디즈니랜드 도착","location":"Hong Kong Disneyland","desc":"10:30분 오픈","link":"https://www.hongkongdisneyland.com","type":"관광"},{"id":"s_2_4","time":"10:30","title":"디즈니랜드 즐기기","location":"Hong Kong Disneyland","desc":"","link":"","type":"식사"},{"id":"s_2_7","time":"22:00","title":"딤섬 OR 베이징덕","location":"홍콩 몽콕","desc":"몽콕 > 딤섬스퀘어\n침사추이 > 록예\n베이징덕 >북경루","link":"https://www.google.co.kr/maps/place/Peking+Garden/@22.2879063,114.1600333,13z/data=!3m1!5s0x340400f2cf14ec83:0x81ada7be75294ce6!4m6!3m5!1s0x340400f324450999:0xdea9c29060d5ccd3!8m2!3d22.2946924!4d114.1690422!16s%2Fg%2F1tcw5t21?entry=ttu&g_ep=EgoyMDI2MDkwOC4wIKXMDSoASAFQAw%3D%3D","type":"식사"},{"id":"s_1_1789023968085","time":"23:00","title":"숙소","location":"이비스 셩완","type":"숙소","desc":"","link":""}]},{"dayNum":3,"date":"10/24 (토)","title":"Day 3: 홍콩 주요 관광지","subtitle":"포토스팟, 시장, 맛집 등","badge":"10/24(토)","schedule":[{"id":"s_2_1789024023157","time":"06:30","title":"기상 및 준비","location":"이비스 셩완","type":"일반","desc":"","link":""},{"id":"s_3_1","time":"09:00","title":"소고기죽 (상기콘지)","location":"상기콘지","desc":"소고기죽","link":"https://maps.app.goo.gl/y8cwGEA6cKVoHEgBA","type":"식사"},{"id":"s_2_1789024829297","time":"10:00","title":"토마토 라면 (신흥유엔)","location":"신흥유엔","type":"식사","desc":"","link":"https://maps.app.goo.gl/yDainhEXzSojgkEBA"},{"id":"s_3_2","time":"11:00","title":"익청빌딩","location":"Yick Cheong Building Tai Koo","desc":"홍콩 포토스팟","link":"https://blog.naver.com/travelyeoni/223549112541?isInf=true&infParams=eyJzY2lkIjoxMTExNjEyNjgyMzY0MTYsInNraWQiOjY3MzMxNTMyMzgwNjYyNCwiY2lkIjo3MjY3MjIxNjg1MzE2NDgsInF1ZXJ5IjoiJUVDJTlEJUI1JUVDJUIyJUFEJUVCJUI5JThDJUVCJTk0JUE5In0=&trackingCode=external","type":"관광"},{"id":"s_2_1789024952945","time":"13:00","title":"레이디스마켓","location":"Ladies' Market Mong Kok","type":"일반","desc":"기념품 구매","link":""},{"id":"s_2_1789024978280","time":"14:00","title":"몽콕야시장","location":"몽콕야시장","type":"일반","desc":"","link":""},{"id":"s_3_6","time":"16:30","title":"애문생 (백종원 스트리트 푸드 파이터)","location":"Oi Man Sang Sham Shui Po","desc":"노포감성","link":"https://m.blog.naver.com/wsy3468/223554982982","type":"식사"},{"id":"s_3_7","time":"19:00","title":"대관람차","location":"홍콩 대관람차 & AIA 활력 공원","desc":"","link":"https://blog.naver.com/ppggyyy/224344171280","type":"관광"},{"id":"s_2_1789025270307","time":"20:00","title":"템플스트리트 야시장","location":"템플스트리트 야시장","type":"일반","desc":"","link":"https://blog.naver.com/doongsil_munji/223525630670"},{"id":"s_2_1789025311017","time":"23:00","title":"숙소","location":"이비스 홍콩 센트럴 앤 셩완 호텔","type":"숙소","desc":"","link":""}]},{"dayNum":4,"date":"10/25 (일)","title":"Day 4: 마지막 쇼핑 & 귀국","subtitle":"브런치 → 마지막 쇼핑 → 공항 이동 → 한국 도착","badge":"10/25(일)","schedule":[{"id":"s_4_1","time":"09:00","title":"체크아웃 준비 & 짐 보관","location":"이비스 홍콩 센트럴 앤 셩완","desc":"호텔 리셉션에 짐 맡기기","link":"","type":"숙소"},{"id":"s_4_2","time":"10:00","title":"주변 마지막 쇼핑 및 구경","location":"셩완","desc":"살거사고 마지막 구경","link":"","type":"관광"},{"id":"s_4_4","time":"13:00","title":"호텔 짐 수령 & A11 공항 버스","location":"Ibis Sheung Wan Bus Stop","desc":"호텔 앞에서 A11 버스 타고 홍콩 공항 이동 (약 1시간 소요)","link":"https://maps.google.com/?q=Ibis+Sheung+Wan+Bus+Stop","type":"이동"},{"id":"s_4_5","time":"14:30","title":"홍콩 공항 수속 & 면세점","location":"Hong Kong International Airport T1","desc":"체크인, 위탁수하물 부치기 및 면세점 구경","link":"","type":"항공"},{"id":"s_4_6","time":"16:40","title":"홍콩 출발 (UO626)","location":"Hong Kong Airport T1","desc":"인천행 비행기 탑승 (16:40 출발)","link":"","type":"항공"},{"id":"s_4_7","time":"21:05","title":"인천 국제공항 도착","location":"인천국제공항 T1","desc":"한국 도착띠","link":"","type":"항공"}]}];
 
     const initialBookingItems = [
       { id: "b_1", title: "홍콩 익스프레스 왕복 항공권 예약 완료", desc: "UO617 (10/22 06:40) / UO626 (10/25 16:40)" },
@@ -631,7 +564,7 @@
     ];
 
     // --- APP STATE ---
-    let daysData = JSON.parse(localStorage.getItem('hk_daysData_v6')) || initialDaysData;
+    let daysData = JSON.parse(localStorage.getItem('hk_daysData_v7')) || initialDaysData;
     let bookingItems = JSON.parse(localStorage.getItem('hk_bookingItems')) || initialBookingItems;
     let packingItems = JSON.parse(localStorage.getItem('hk_packingItems')) || initialPackingItems;
     let expenseItems = JSON.parse(localStorage.getItem('hk_expenseItems')) || initialExpenseItems;
@@ -653,7 +586,7 @@
     };
 
     function saveDataToStorage() {
-      localStorage.setItem('hk_daysData_v6', JSON.stringify(daysData));
+      localStorage.setItem('hk_daysData_v7', JSON.stringify(daysData));
       localStorage.setItem('hk_bookingItems', JSON.stringify(bookingItems));
       localStorage.setItem('hk_packingItems', JSON.stringify(packingItems));
       localStorage.setItem('hk_expenseItems', JSON.stringify(expenseItems));
@@ -839,7 +772,7 @@
               ${isRouteType ? `<i class="fa-solid fa-route text-sky-400 mr-1"></i>` : ''}${item.title}
             </h4>
 
-            ${item.desc ? `<p class="text-xs text-slate-400 leading-relaxed line-clamp-2">${item.desc}</p>` : ''}
+            ${item.desc ? `<p class="text-xs text-slate-400 leading-relaxed whitespace-pre-line line-clamp-3">${item.desc}</p>` : ''}
 
             <div class="flex items-center justify-between text-[11px] pt-1 text-slate-400 border-t border-slate-800/60">
               <span class="flex items-center gap-1 text-slate-300">
